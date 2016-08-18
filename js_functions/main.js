@@ -15,7 +15,8 @@ function add2(x, y){
 //the result of adding two specific numbers with the add2 function
     //used in button 'ADD #2' on index.html
 add2result = add2(10, 36);
-//
+//function that will hide a selected element
+    //intened for use on card back in index.html to reveal card front
 function cardFlip(element){
     $(element).hide();
 }
