@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /*Formatting for all divisions*/
+        div{
+            border: dotted black 1px;
+            margin: 2px;
+            padding: 0 0 5px 10px;
+        }
+        /*Formatting for text inputs*/
+        form input[type="text"]{
+            background-color: lightblue;
+            font-family: Calibri;
+            border-color: lavender;
+            box-shadow: 5px 5px 5px lightgray;
+            margin: 0 6px 6px 0;
+        }
+    </style>
+</head>
+<body>
+    <form action="http://danielpaschal.com/learningfuze/reflect.php" method="get">
+        <!--Name text inputs-->
+        <div>
+            <h2>What is your Name?</h2>
+            First name:
+            <input type="text" name="first_name" placeholder="First">
+            Last name:
+            <input type="text" name="last_name" placeholder="Last"><br>
+        </div>
+        <!--text area-->
+        <div>
+            <h2>Tell us a bit about yourself.</h2>
+            <textarea name="mainText" rows="10" cols="50" placeholder="Enter text here."></textarea>
+        </div>
+        <!--Favorite food radio buttons-->
+        <div>
+            <h2>What is your favorite food?</h2>
+            <label><input type="radio" name="favorite_food" value="lasagne" checked>Lasagne</label><br>
+            <label><input type="radio" name="favorite_food" value="tacos">Tacos</label><br>
+            <label><input type="radio" name="favorite_food" value="hamburgers">Hamburgers</label><br>
+        </div>
+        <!--Favorite games checkboxes-->
+        <div>
+            <h2>What are your favorite games?</h2>
+            <label><input type="checkbox" name="favorite_game[]" value="catan">Settlers of Catan</label><br>
+            <label><input type="checkbox" name="favorite_game[]" value="monopoly">Monopoly</label><br>
+            <label><input type="checkbox" name="favorite_game[]" value="twilight_imperium">Twilight Imperium</label><br>
+            <label><input type="checkbox" name="favorite_game[]" value="don't_play_games" disabled>I don't play games</label><br>
+        </div>
+        <!--Favorite movies select menu-->
+        <div>
+            <h2>What are your favorite movies?</h2>
+            <select name="movies[]" multiple>
+                <option value="dances_with_wolves">Dances With Wolves</option>
+                <option value="waterworld">Waterworld</option>
+                <option value="the_untouchables">The Untouchables</option>
+                <option value="robin_hood_POT">Robin Hood: Prince of Thieves</option>
+                <option value="the_postman">The Postman</option>
+            </select>
+        </div>
+        <!--Submit button-->
+        <input type="submit" value="Submit Form">
+    </form>
+</body>
+
+</html>
