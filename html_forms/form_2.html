@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: #B13939;
+            color: white;
+            font-family: Arial;
+            width: calc(100% - 150px);
+            margin: 45px 75px 0 75px;
+
+        }
+        h2 {
+            font-weight: 400;
+            padding: 0 10px;
+            margin: 20px 0;
+        }
+        /*the text in the second heading is centered*/
+        h2:first-child {
+            text-align: center;
+        }
+        ol {
+            margin: 0;
+            padding: 20px;
+        }
+        /*parent of the form is html not the body????*/
+        /*dimensions need to match those of the body*/
+        /*top margin matches that of paragraph above the second heading so that it centers the Second heading vertically between the two adjacents pieces*/
+        form{
+            position: absolute;
+            width: calc(100% - 150px);
+            height: 236px;
+            margin-top: 16px;
+        }
+        /*child of the form*/
+        div{
+            position: inherit;
+            width: calc(50% - 10px);
+            height: 200px;
+        }
+        /*the left_col will be pinned to the left of the form*/
+        div.left_col{
+            left: 0;
+        }
+        /*the right_col will be pinned to the right of the from*/
+        div.right_col{
+            right: 0;
+        }
+        /*the parent of this item will be a div (either left or right column)*/
+        /*we can have the entire width be 100% - 34px of the parent to accommodate for the padding and borders*/
+        input[type="text"] {
+            position: absolute;
+            left: 0;
+            width: calc(100% - 34px);
+            margin: 0;
+            padding: 15px;
+            border-color: #be672a;
+            box-shadow: 0 5px 5px #881717;
+        }
+        /*pins all inputs in the left column div to the left side*/
+        div.left_col input {
+            left: 0;
+        }
+        /*pins all inputs in the right column div to the right side*/
+        div.right_col input {
+            right: 0;
+        }
+        /*the SSN input is half the width of the other text inputs*/
+        /*width was calculated based on the fact that all text inputs have 34px of horizontal padding and borders*/
+        form input[name="ssn"] {
+            width: calc(50% - 17px);
+            right: 0;
+        }
+        /*Each row is dropped down an extra 59px since the sum of padding, height, and border is 59px*/
+        /*would probably be more eloquent with a variable*/
+        .row1{
+            top: 0;
+        }
+        .row2{
+            top: 59px;
+        }
+        .row3{
+            top: 118px;
+        }
+        /*adjust the width to reflect it is now contained in a div*/
+        input[type="submit"] {
+            position: absolute;
+            right: 0;
+            top: 177px;
+            width: calc(50% - 17px);
+            margin: 20px 0 0 0;
+            border: none;
+            padding: 15px;
+            background-color: #881717;
+            color: white;
+            text-align: center;
+            box-shadow: 0 5px 5px #881717;
+        }
+    </style>
+    <script></script>
+</head>
+<body>
+    <h2>Instructions for Application - Academic Year 2014</h2>
+    <ol>
+        <li>The deadline for 2014-2015 scholarship application: March 30, 2014. Applications received after March 30
+            will be considered on a funds available basis.
+        </li>
+        <li>Only completed applications will be considered. Do Not Leave Items Blank.</li>
+        <li>Attach a current copy of your high school and/or college transcripts.</li>
+        <li>Two signed letters of recommendation (from non-relatives) must be attached to this application.</li>
+    </ol>
+    <p>Consideration for any scholarship award is based on a point system including GPA, participation in
+        extra-curricular activities, school organizations and community service. This will be a four semester
+        scholarship, and you must maintain criteria set in the guidelines.</p>
+    <h2>Applicant Data</h2>
+    <!--start of form-->
+    <form action="http://danielpaschal.com/learningfuze/reflect.php" method="get">
+        <div class="left_col">
+            <input type="text" name="applicant_name" placeholder="Last Name, First Name, MI" class="row1">
+            <input type="text" name="location" placeholder="City, State, Zip, County" class="row2">
+            <input type="text" name="major" placeholder="Intended major at University" class="row3">
+        </div>
+        <div class="right_col">
+            <input type="text" name="ssn" placeholder="Social Security #" class="row1">
+            <input type="text" name="phone_number" placeholder="Permanent Home Phone" class="row2">
+            <input type="text" name="attending_location" placeholder="At which location will you be attending?" class="row3">
+            <input type="submit" value="NEXT >>">
+        </div>
+    </form>
+
+</body>
+</html>
