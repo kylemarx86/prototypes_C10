@@ -41,10 +41,64 @@
     <script>
         $(document).ready(function () {
             //playground 1 code
+            var playground = $('#playground1');
+            playground.removeClass('playground_destination').addClass('playground_source');
+            var new_h1 = $("<h1>").text( $("h1:nth-child(1)").text() );
+            var selected_paragraph = $("p:nth-child(2)");       //selects the paragraph
+            var first_p = $("<p>").text(selected_paragraph.text());     //sets the text of our new paragraph to that  of the selected_paragraph
+
+            selected_paragraph = $("p:nth-child(3)");   //selects the next paragraph
+            var second_p = $("<p>").css({color:"red"}).text(selected_paragraph.text());     //sets the text of our new paragraph to that  of the selected_paragraph
+
+            playground.append(new_h1, first_p, second_p);  //appends h1 and 2 p elements to the playgroud
 
             //playground 2 code
+            playground = $("#playground2");
+            playground.addClass('playground_source').removeClass('playground_destination');
+            var div1 = $("<div>").addClass('awesome_class').text("Here is some awesome div text");  //create the first div
+            var div2 = $("<div>").addClass('awesome_class').text($("#my_awesome_div2").text());     //create the second div
+
+            //start of the thrid div
+            var full_text = $("#my_awesome_div3").text();         //grabs the full text from the div with #my_awesome_div3
+            var strong_text = $("strong").text();      //grabs the text from the portion of div with #my_awesome_div3 that is strong
+            var pos_of_strong_text = full_text.indexOf(strong_text);    //get position of start of strong_text in full_text
+            var text_not_in_strong = full_text.replace(strong_text,"");  //removes the text in strong from the full text
+            var text_before_strong = full_text.substring(0, pos_of_strong_text);//all text prior to the start of the strong text will be text_before_strong
+            var text_after_strong = text_not_in_strong.substring(pos_of_strong_text);//the text_after_strong starts where strong_text started after its removal
+
+            var strong_elt = $("<strong>").text(strong_text);   //creation of a strong element
+            var div3 = $("<div>").addClass('awesome_class').text(text_before_strong);   //creation of the third div with the text being that which is before the strong element
+            div3.append(strong_elt, text_after_strong);     //add on the strong element and the rest of the text
+
+            playground.append(div1, div2, div3);    //add all three divs to the second playground
 
             //playground 3 code
+
+            playground = $("#playground3").addClass('playground_source').removeClass('playground_destination');
+            //create ul and add li elements to it;
+            var main_ul = $("<ul>").addClass('neato');
+            var list_elt1 = $("<li>").text($("ul.neato li:nth-child(1)").text());
+            var list_elt2 = $("<li>").text($("ul.neato li:nth-child(2)").text());
+            var list_elt3 = $("<li>").text($("ul.neato li:nth-child(3)").text());
+            main_ul.append(list_elt1,list_elt2, list_elt3);
+
+            //create the figure with caption
+            var figure_elt = $("<figure>").addClass("awesome_picture"); //creates the new figure element
+            var orig_img_src = $("figure img").attr('src'); //retrieve the source of the original img
+            var img_elt = $("<img>").attr('src',orig_img_src); //create the new image and set the src to that of the stored src
+
+            var full_text = $("figcaption").text();         //grabs the full text from the figcaption
+            var text_in_bold = $(".bold_text").text();      //grabs the text from the portion of the figcaption in the span with class 'bold_text'
+            var text_not_in_bold = full_text.replace(text_in_bold,"");  //removes the text in the span with class 'bold_text' from the full text
+
+            var figcaption_elt = $("<figcaption>").text(text_not_in_bold);  //creates a new figcaption with the text outside of the span
+            var figcaption_elt_bold = $("<span>").addClass('bold_text').text(text_in_bold);     //creates a span with the text that was originally in the span
+            figcaption_elt.append(figcaption_elt_bold);     //adds the new span to the newly created figcaption
+
+            figure_elt.append(img_elt, figcaption_elt);  //append the new image and figcaption to the figure
+
+            //add main_ul and figure_elt to the playground
+            playground.append(main_ul, figure_elt);
         });
     </script>
 </head>
