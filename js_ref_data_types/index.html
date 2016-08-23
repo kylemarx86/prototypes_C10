@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        /*
+         //FS 1.0
+         student_array = ["Christine", "Sean", "Danny", "Grace", "Esther"];
+         console.log("the third student", student_array[2]);
+         //FS 1.1
+         console.log("full student_array:", student_array);
+         console.log("length of student_array:",student_array.length);
+         student_array.push("Joyce","Bruce");
+         console.log("length of student_array after pushing", student_array.length);
+         console.log("full student_array after pushing:", student_array);
+         */
+        //FS 2.0 - building student object
+        var student = {};
+        student.firstName = "Doug";
+        student.lastName = "Murphy";
+        student.age = 30;
+        student.school = "School of Hard Knocks";
+        student.questionList = [];
+        student.hasQuestion = false;
+        //FS 2.1 - add methods
+        //a greeting from the student
+        student.greeting = function(){
+            return "Hello, my name is " + this.firstName;
+        }
+        //more information about the student
+        student.aboutMe = function(){
+            return "My full name is " + this.firstName + " " + this.lastName + ", I am " + this.age + " years old and I am a student at " + this.school + ".";
+        }
+        //a question from the student
+            //this will add a question to the questionList and flag that there is a question
+        student.askQuestion = function(question){
+            this.questionList.push(question);
+            this.hasQuestion = true;
+            return "A question has been added to your list";
+        }
+        //answers a question from the student
+        // this will remove a question from the questionList if there is a question
+        //
+        student.answerQuestion = function(){
+            if(this.hasQuestion){
+                var questionToAnswer = this.questionList.pop();
+                if(this.questionList.length < 1){
+                    this.hasQuestion = false;
+                }
+                return questionToAnswer;
+            }else {
+                return "You have no pending questions";
+            }
+        }
+
+        //testing greeting
+        console.log("greeting function: ", student.greeting());
+
+        //testing aboutMe
+        console.log("aboutMe function: ", student.aboutMe());
+
+        //testing askQuestion / answerQuestion
+        console.log("answerQuestion: ", student.answerQuestion());
+        //exepected "You have no pending questions" got it
+        console.log("askQuestion 1: ", student.askQuestion("How many roads must a man walk down before you call him a man?"));
+        console.log("askQuestion 2: ", student.askQuestion("How many seas must a white dove sail before she sleeps in the sand?"));
+        console.log("askQuestion 3: ", student.askQuestion("How many times must the cannon balls fly before they're forever banned?"));
+        console.log("answerQuestion 2: ", student.answerQuestion());
+        //expecting "How many times must the cannon balls fly..." got it
+
+    </script>
+</head>
+<body></body>
+</html>
