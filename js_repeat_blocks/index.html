@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            //FS 1 For loop
+            var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            //ascending order
+            console.log("ascending order");
+            for(var i = 0; i<numbers.length; i++){
+                console.log(numbers[i]);
+            };
+            //descending order
+            console.log("descending order");
+            for(var i = numbers.length-1; i>=0; i--){
+                console.log(numbers[i]);
+            };
+            //odd numbers
+            console.log("odd numbers")
+            for(var i = 0; i< numbers.length; i++){
+                if(numbers[i] % 2 == 1)
+                    console.log(numbers[i]);
+            }
+            //odd numbers - mixed array
+            console.log("odd numbers from mixed array")
+            var mixedArray = [4, 56, 11, 13, 97, 22, 7, 36, 19, 5, 8, 10];
+            for(var i = 0; i< mixedArray.length; i++){
+                if(mixedArray[i] % 2 == 1)
+                    console.log(mixedArray[i]);
+            }
+            //FS 2 For in loop
+            console.log("student and desk assignment")
+            var classRoom = {desk1: 'Stu', desk2: 'Peggy', desk3: 'LoneStar', desk4: 'George', desk5: 'Sheldon'};
+            for(var index in classRoom){
+                console.log(classRoom[index] + " is at " + index);
+            }
+            //FS 3 While loop
+            var studentArray = [{name: "Bob", grade: 87}, {name: "Fred", grade: 82}, {name: "George", grade: 93}, {name: "Robert", grade: 85}];
+            function findStudent(studentName){
+                var index = 0;
+                var output = "";
+                var studentFound = false;
+                while(index < studentArray.length && !studentFound){
+                    if(studentArray[index].name == studentName){
+                        studentFound = true;
+                        break;
+                    }
+                    index++;
+                }
+                if(studentFound){
+                    output = "Found student " + studentArray[index].name + " their grade is: " + studentArray[index].grade;
+                }else{
+                    output = "Student " + studentName + " not found.";
+                }
+                return output;
+            }
+            //testing while loop
+            console.log("findStudent testing");
+            console.log("Test 1:", findStudent("George"));
+            console.log("Test 2:", findStudent("Fred"));
+            console.log("Test 3:", findStudent("Hank"));
+        </script>
+    </head>
+    <body></body>
+</html>
