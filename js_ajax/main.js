@@ -14,9 +14,12 @@ $(document).ready(function(){
 
                 //FS3 - Adding the images
                 var movieImages = [];
+                var movieInfo = [];
                 for(var i = 0; i < global_result.feed.entry.length; i++){
                     movieImages[i] = global_result.feed.entry[i]['im:image'][2].label;
-                    $currentImage = $('<img>').attr('src', movieImages[i]);
+                    movieInfo[i] = global_result.feed.entry[i]['title'].label;
+                    $currentImage = $('<img>').attr({'src': movieImages[i], 'title': movieInfo[i]});
+
                     $('#main').append($currentImage);
                 }
             }
