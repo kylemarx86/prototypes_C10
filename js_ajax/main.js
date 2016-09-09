@@ -15,12 +15,21 @@ $(document).ready(function(){
                 //FS3 - Adding the images
                 var movieImages = [];
                 var movieInfo = [];
-                for(var i = 0; i < global_result.feed.entry.length; i++){
-                    movieImages[i] = global_result.feed.entry[i]['im:image'][2].label;
-                    movieInfo[i] = global_result.feed.entry[i]['title'].label;
-                    $currentImage = $('<img>').attr({'src': movieImages[i], 'title': movieInfo[i]});
-
-                    $('#main').append($currentImage);
+                // var movieDivs = [];
+                for(var i = 0; i< global_result.feed.entry.length; i++){
+                    var $movieDiv = $('<div>');
+                    (function(){
+                        var index = i;
+                        // movieDivs.push('target_element', $movieDiv);
+                        movieImages[index] = global_result.feed.entry[index]['im:image'][2].label;
+                        movieInfo[index] = global_result.feed.entry[index]['title'].label;
+                        $currentImage = $('<img>').attr({'src': movieImages[index], 'title': movieInfo[index]});
+                        // $movieDiv = $('div');
+                        $movieDiv.text(movieInfo[index]);
+                        $movieDiv.addClass('imgBlock');
+                        $movieDiv.append($currentImage);
+                    })();
+                    $('#main').append($movieDiv);
                 }
             }
         });
