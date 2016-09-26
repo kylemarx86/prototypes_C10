@@ -110,5 +110,4 @@ function find_greatest_num_and_index($direction)
 }
 
 find_greatest_num_and_index(1);
-
 ?>
