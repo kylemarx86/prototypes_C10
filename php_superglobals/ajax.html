@@ -8,12 +8,13 @@
         });
 
         function applyButtonHandler() {
-            $('button').click(makeAjaxCall());
+            $('button').click(makeAjaxCall);
         }
 
         function makeAjaxCall() {
-            var $checkbox = $('input[value=howdy]').prop('checked');
-            var $textValue = $('textarea').text();
+            var $checkbox = $('input[type=checkbox]').prop('checked');
+//            var $checkbox = $('input[type=checkbox]').val();
+            var $textValue = $('textarea').val();
             $.ajax({
                 url: 'index.php',
                 method: 'GET',
@@ -23,7 +24,9 @@
                 },
                 dataType: 'text',
                 success: function (response) {
-                    console.log('successfully called server',response);
+//                    console.log('checkbox: ', $checkbox);
+//                    console.log('textarea text: ', $textValue);
+                    console.log('successfully called server\n',response);
                 }
             });
         }
@@ -33,7 +36,8 @@
     <form>
         <input type="checkbox" value="howdy">Here's a checkbox</input><br>
         <textarea></textarea><br>
-        <button>Make AJAX call</button>
+        <button type="button">Make AJAX call</button>
     </form>
+
 </body>
 </html>
