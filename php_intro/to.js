@@ -4,8 +4,6 @@ var variable2 = 4;
 var variable3 = ['foo', 'bar'];
 
 //EXERCISE 2
-//did they want a swap or directly defined
-
 variable1 = 4;
 variable1 = 'hello';
 
@@ -17,8 +15,6 @@ for(var i = 1; i < numbers.length; i++){
     result += numbers[i];
 }
 console.log('Result = ' + result);
-//differences between print and echo (compared to console.log)
-
 
 //EXERCISE 4
 console.log('This is a string' + 'This is another string');
@@ -27,13 +23,11 @@ console.log('This is a string' + 'This is another string');
 var my_float = 3.5;
 var my_int = parseInt(my_float);
 var my_float2 = 5.3;
-var my_int2 = parseInt(my_float2);      //double check
-//difference between casting int (int) and intval, vis a vis parseInt
+var my_int2 = parseInt(my_float2);
 
 //EXERCISE 6
 var my_var1 = 'Hello';
-//what is the value of a php variable when declared
-//must we define my_var2????????
+var my_var2;
 if(my_var2 !== undefined && my_var2 !== null){
     console.log(my_var2);
 }else{
@@ -60,11 +54,9 @@ var student = {
     'class': 'English',
     'grade': 75
 }
-console.log('student', student);
+// console.log('student', student);
 
 //EXERCISE 9
-// student = new stdClass();
-//must we define a stdClass prototype
 student = {};
 student.name = 'Skippy';
 student.class = 'English';
@@ -101,4 +93,4 @@ function find_greatest_num_and_index(direction) {
 }
 
 find_greatest_num_and_index(1);
-console.log('find_greatest_num_and_index', find_greatest_num_and_index(1));
+// console.log('find_greatest_num_and_index', find_greatest_num_and_index(1));
