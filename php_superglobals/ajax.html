@@ -1,0 +1,39 @@
+<!DOCTYPE>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <script>
+        $(document).ready(function () {
+            applyButtonHandler();
+        });
+
+        function applyButtonHandler() {
+            $('button').click(makeAjaxCall());
+        }
+
+        function makeAjaxCall() {
+            var $checkbox = $('input[value=howdy]').prop('checked');
+            var $textValue = $('textarea').text();
+            $.ajax({
+                url: 'index.php',
+                method: 'GET',
+                data: {
+                    checkbox: $checkbox,
+                    textArea: $textValue
+                },
+                dataType: 'text',
+                success: function (response) {
+                    console.log('successfully called server',response);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <input type="checkbox" value="howdy">Here's a checkbox</input><br>
+        <textarea></textarea><br>
+        <button>Make AJAX call</button>
+    </form>
+</body>
+</html>
