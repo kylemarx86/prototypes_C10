@@ -1,5 +1,6 @@
 <!-- Session Setter -->
 <?php
+    session_start();
     //set the value of name, if we have a session
     if (isset($_SESSION['name'])) {
         $name = $_SESSION['name'];
