@@ -6,6 +6,12 @@
           type="text/css"/>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script>
+        $(document).ready(function () {
+            console.log('document go')
+            load_files();
+            createBlankModal();
+        })
+
         function load_files() {
             $.ajax({
                 url: 'get_images.php',
@@ -53,11 +59,18 @@
         }
 
         function handleImageClick() {
-            $(this).attr('data-toggle','modal');
+//            $(this).attr('data-toggle','modal');
+            //find modal in the image_container
+
             //change image source in the modal
+            var $modal = $('modal');
 
+            var $image = $('#imageModal').find('img').attr('src','images/beagle_.jpg');
+//            var $image = $('<img>').attr('src','images/beagle_.jpg');   //temp hardcoded
+//            $image.attr('src',$(this).attr('src'));      //is prob gonna work
             //show the modal
-
+//            $modal.show();
+            $modal.modal();
 
             console.log('this this right now: ', this);
             console.log('this image right now: ', $($image));
@@ -80,8 +93,6 @@
 //            console.log('this is ',this);
 //            $(this).attr({'data-toggle':'modal','data-target':$modal});
         }
-
-        load_files();
     </script>
 </head>
 <body></body>
