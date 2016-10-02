@@ -8,36 +8,14 @@
     <script>
         $(document).ready(function () {
             console.log('document go')
+
+            createBlankModalAndImageContainer();
             load_files();
-            createBlankModal();
         })
 
-        function load_files() {
-            $.ajax({
-                url: 'get_images.php',
-                dataType: 'json',
-                success: function (response) {
-                    if(response.success){
-                        var images = response.files;
-                        var $container = $('<div>').addClass('container').attr('id','imageContainer');
-                        for (var i = 0; i < images.length; i++) {
-                            var $image = $('<img>').attr({
-                                src: images[i],
-                                width: '25%'
-                            });
-                            $image.click(handleImageClick);
-                            $container.append($image);
-                        }
-                        $('body').append($container);
-                    }
-                },
-                error: function (response) {
-                    console.log('no connection');
-                }
-            });
-        }
-
-        function createBlankModal() {
+        function createBlankModalAndImageContainer() {
+            //create div with id imageConatiner
+            var imageContainer = $('<div>').attr('id','imageContainer');
             //create div with class modal and fade with id = imageModal
             var $modal = $('<div>').addClass('modal fade').attr('id','imageModal');
             //create div with class modal-dialog
@@ -54,23 +32,59 @@
             $modalDialog.append($modalDialog);
             //add div with class modal-dialog to div with class modal
             $modal.append($modalDialog);
-            //add div with class modal to the container
-            $('#image_container').append($modal);
+            //add div with class modal to the div with id imageContainer
+            $('imageContainer').append($modal);
+            //add image container to the body
+            $('body').append(imageContainer);
         }
 
+        function load_files() {
+            $.ajax({
+                url: 'get_images.php',
+                dataType: 'json',
+                success: function (response) {
+                    if(response.success){
+                        var images = response.files;
+//                        var $container = $('<div>').addClass('container').attr('id','imageContainer');
+                        var $container = $('#imageContainer');
+                        for (var i = 0; i < images.length; i++) {
+                            var $image = $('<img>').attr({
+                                src: images[i],
+                                width: '25%'
+                            });
+                            $image.click(handleImageClick);
+                            $container.append($image);
+                        }
+                    }
+                },
+                error: function (response) {
+                    console.log('no connection');
+                }
+            });
+        }
+
+
+
+        //when image is clicked, the modal's image should be changed to actively clicked image and the modal should appear
         function handleImageClick() {
 //            $(this).attr('data-toggle','modal');
             //find modal in the image_container
 
             //change image source in the modal
-            var $modal = $('modal');
+            var $modal = $('#imageModal');
 
-            var $image = $('#imageModal').find('img').attr('src','images/beagle_.jpg');
+            console.log('modal', $modal);
+            var $image = $modal.find('img').attr('src','images/beagle_.jpg');
 //            var $image = $('<img>').attr('src','images/beagle_.jpg');   //temp hardcoded
 //            $image.attr('src',$(this).attr('src'));      //is prob gonna work
             //show the modal
 //            $modal.show();
             $modal.modal();
+            $modal.show();
+
+//            $(this).attr({'data-toggle':'modal','data-target':$modal});
+            $(this).attr('data-target',$modal);
+            $(this).attr('data-toggle','modal');
 
             console.log('this this right now: ', this);
             console.log('this image right now: ', $($image));
