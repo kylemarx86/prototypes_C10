@@ -1,8 +1,7 @@
 #image_container{
-    /*prob change the position*/
     position: absolute;
-    width: 75%;
-    height: 100%;
+    width: 800px;
+    height: 600px;
     left: 50%;
     transform: translate(-50%, 0);
 }
@@ -14,8 +13,10 @@
 #image_container img{
     width: 100%;
     position: absolute;
-    left: 0;
+    /*left: 0;*/
     top: 0;
+    /*animation-name: prev_image_in;*/
+    /*animation-duration: 4s;*/
 }
 button{
     position: absolute;
@@ -31,4 +32,31 @@ button{
 
 #nextButton{
     right: -10%;
+}
+
+/*animations*/
+/* Chrome, Safari, Opera */
+@-webkit-keyframes prev_image_in {
+    0%   {left: -100%}
+    25%  {left: -75%}
+    50%  {left: -50%}
+    75%  {left: -25%}
+    100% {left: 0}
+}
+
+/*!* Standard syntax *!*/
+/*@keyframes prev_image_in {*/
+    /*0%   {left: 100%}*/
+    /*25%  {left: 75%}*/
+    /*50%  {left: 50%}*/
+    /*75%  {left: 25%}*/
+    /*100% {left: 0}*/
+/*}*/
+
+@-webkit-keyframes prev_image_out {
+    0%   {left: 0}
+    25%  {left: 25%}
+    50%  {left: 50%}
+    75%  {left: 75%}
+    100% {left: 100%}
 }

@@ -7,7 +7,7 @@
     <link href="carousel_style.css" type="text/css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
     <script>
-        var image_array = null;
+        var image_array = [];
         var current_image = null;
 
         $(document).ready(function () {
@@ -37,21 +37,42 @@
                 success: function (response) {
                     if(response.success){
                         //gather all images
-                        image_array = response.files;
-                        //create an image and set the source
-                        current_image = 0;
-                        var $image = $('<img>').attr('src',image_array[current_image]);
+                        var files = response.files;
+
+                        //set up the gathered images
+                        for(var i = 0; i < files.length; i++){
+                            image_array.push($('<img>').attr('src', files[i]));
+                            $('#image_container').append(image_array[i]);
+//                            var $image = $('<img>').attr('src',image_array[i]);
+                        }
+                        initialize();
+
+                        //create all images
+
+                        //stack all images
+
                     }
-                    $('#image_container').append($image);
+
                 },
                 error: function (response) {
                     console.log('connection error');
                 }
             });
         }
+
+        //sets up pictures for display
+        function initialize() {
+            //create an image and set the source
+            current_image = 0;
+
+            for(var i = 0; i < image_array.length; i++){
+                image_array[i].attr({'left':'100%','visibility':'hidden'});
+            }
+            image_array[current_image].attr('visibility','visible');
+        }
         
         function next_image(){
-            console.log('next image');
+//            console.log('next image');
             if(current_image < image_array.length - 1){
                 current_image += 1;
             }else{
@@ -61,7 +82,7 @@
         }
         
         function prev_image() {
-            console.log('previous image');
+//            console.log('previous image');
             if(current_image > 0){
                 current_image -= 1;
             }else{
@@ -70,8 +91,11 @@
             update_image();
         }
 
-        function update_image() {
-            $('#image_container').find('img').attr('src',image_array[current_image]);
+        function update_image(direciton) {
+//            image_array
+//            $('#image_container').find('img').attr('src',image_array[current_image]);
+
+            image_array[current_image].visibility('visible');
         }
         
         function applyEventHandlers() {
