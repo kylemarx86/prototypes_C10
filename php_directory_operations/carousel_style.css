@@ -1,0 +1,34 @@
+#image_container{
+    /*prob change the position*/
+    position: absolute;
+    width: 75%;
+    height: 100%;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+/*each image should be
+    -100% of the width of the container
+    -positioned absolutely
+    -left and top at 0*/
+#image_container img{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+button{
+    position: absolute;
+    width: 10%;
+    height: 100%;
+    background-color: blue;
+    border-color: black;
+    font-size: 3em;
+}
+#prevButton{
+    left: -10%;
+}
+
+#nextButton{
+    right: -10%;
+}

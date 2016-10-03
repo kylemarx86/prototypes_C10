@@ -4,8 +4,12 @@
 
 <html>
 <head>
+    <link href="carousel_style.css" type="text/css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
     <script>
+        var image_array = null;
+        var current_image = null;
+
         $(document).ready(function () {
             createFeaturesAndButtons();
             load_files();
@@ -14,10 +18,10 @@
         });
 
         function createFeaturesAndButtons() {
-            var $container = $('<div>').attr('id','imageContainer');
+            var $container = $('<div>').attr('id','image_container');
             //create next and previous buttons and attach the appropriate handler
-            var $prevButton = $('<button>').attr('id','prevButton').text('prev');
-            var $nextButton = $('<button>').attr('id','nextButton').text('next');
+            var $prevButton = $('<button>').attr('id','prevButton').text('<');
+            var $nextButton = $('<button>').attr('id','nextButton').text('>');
 
             //add buttons to container
             $container.append($prevButton);
@@ -25,7 +29,7 @@
             //add container to body
             $('body').append($container);
         }
-
+        //make ajax call to get_images.php and saves those images to image_array
         function load_files() {
             $.ajax({
                 url: 'get_images.php',
@@ -33,25 +37,41 @@
                 success: function (response) {
                     if(response.success){
                         //gather all images
-                        var images = response.files;
+                        image_array = response.files;
                         //create an image and set the source
-                        var $image = $('<img>').attr('src',images[0]);
+                        current_image = 0;
+                        var $image = $('<img>').attr('src',image_array[current_image]);
                     }
-                    $('#imageContainer').append($image);
+                    $('#image_container').append($image);
                 },
                 error: function (response) {
                     console.log('connection error');
                 }
-
             });
         }
         
         function next_image(){
             console.log('next image');
+            if(current_image < image_array.length - 1){
+                current_image += 1;
+            }else{
+                current_image = 0;
+            }
+            update_image();
         }
         
         function prev_image() {
             console.log('previous image');
+            if(current_image > 0){
+                current_image -= 1;
+            }else{
+                current_image = image_array.length - 1;
+            }
+            update_image();
+        }
+
+        function update_image() {
+            $('#image_container').find('img').attr('src',image_array[current_image]);
         }
         
         function applyEventHandlers() {
