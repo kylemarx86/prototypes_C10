@@ -66,9 +66,10 @@
             current_image = 0;
 
             for(var i = 0; i < image_array.length; i++){
-                image_array[i].attr({'left':'100%','visibility':'hidden'});
+//                image_array[i].attr({'left':'100%','visibility':'hidden'});
+                image_array[i].attr('left','100%');
             }
-            image_array[current_image].attr('visibility','visible');
+//            image_array[current_image].attr('visibility','visible');
         }
         
         function next_image(){
@@ -95,7 +96,35 @@
 //            image_array
 //            $('#image_container').find('img').attr('src',image_array[current_image]);
 
-            image_array[current_image].visibility('visible');
+
+            //declare old image
+
+            //declare new image
+            var new_image_index = null;
+            if(direciton === 1){
+                if (current_image < image_array.length - 1) {
+                    new_image_index += 1;
+                } else {
+                    new_image_index = 0;
+                }
+            }else{
+                if(current_image > 0){
+                    new_image_index -= 1;
+                }else{
+                    new_image_index = image_array.length - 1;
+                }
+            }
+
+
+            //prepare new image for move in
+
+            //slide previous image out
+
+            //slide new image in
+//            image_array[current_image].visibility('visible');
+
+            //update current_image
+            current_image = new_image_index;
         }
         
         function applyEventHandlers() {
