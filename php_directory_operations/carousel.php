@@ -108,22 +108,22 @@
                 } else {
                     new_image_index = 0;
                 }
+                //prepare new image for move in
+                $(image_array[new_image_index]).css('left', '100%');
             }else{
                 if(current_image_index > 0){
                     new_image_index = current_image_index - 1;
                 }else{
                     new_image_index = image_array.length - 1;
                 }
+                //prepare new image for move in
+                $(image_array[new_image_index]).css('right', '100%');
             }
 
-            //prepare new image for move in
-
             //slide previous image out
-            $(image_array[current_image_index]).animate({left: 100*direction+'%'},3000);
-
+            $(image_array[current_image_index]).animate({left: -100*direction+'%'},3000);
             //slide new image in
-            $(image_array[new_image_index]).animate({left: 100*direction+'%'},3000);
-
+            $(image_array[new_image_index]).animate({left: '0'},3000);
             //update current_image_index
             current_image_index = new_image_index;
 
