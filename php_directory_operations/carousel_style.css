@@ -4,6 +4,7 @@
     height: 600px;
     left: 50%;
     transform: translate(-50%, 0);
+    overflow: hidden;
 }
 
 /*each image should be
@@ -27,11 +28,11 @@ button{
     font-size: 3em;
 }
 #prevButton{
-    left: -10%;
+    left: 0;
 }
 
 #nextButton{
-    right: -10%;
+    right: 0;
 }
 
 /*animations*/
