@@ -16,17 +16,24 @@
     position: absolute;
     /*left: 0;*/
     top: 0;
-    /*animation-name: prev_image_in;*/
-    /*animation-duration: 4s;*/
 }
 button{
     position: absolute;
     width: 10%;
     height: 100%;
-    background-color: blue;
+    background-color: rgba(0,0,255,0.1);
     border-color: black;
+    border: hidden;
     font-size: 3em;
+    transition-duration: 750ms;
 }
+
+button:hover{
+    border: 1px solid;
+    background-color: rgba(0,0,255,0.9);
+    transition-duration: 500ms;
+}
+
 #prevButton{
     left: 0;
 }
