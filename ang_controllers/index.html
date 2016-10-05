@@ -3,10 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <title>Angular Controllers</title>
+    <!--link to a yet uncreated style sheet-->
+    <!--<link type="text/css" rel="stylesheet" href="style.css">-->
     <!-- Add the AngularJS CDN below -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>-->
 
 </head>
-<body>
+<body ng-app="myApp">
+<div ng-controller="formController as fc">
+    First Name<br>
+    <input type="text" ng-model="fc.form.fName"><br>
+    Last Name<br>
+    <input type="text" ng-model="fc.form.lName"><br>
+    Email<br>
+    <input type="text" ng-model="fc.form.email"><br>
+    Comments<br>
+    <textarea ng-model="fc.form.comments" ng-disabled="fc.outOfSpaceInComment()"></textarea><br>
+    <p>Characters remaining: {{fc.charactersRemainingInComment()}}</p>
+    <button type="button" ng-click="fc.addData()">Add data</button>
+    <div ng-controller="tableController as tc">
+        <p>Total Entries: {{tc.numberOfEntries()}}</p>
+        <table>
+            <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Comments</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in formArray">
+                    <td>{{data.fName + ' ' + data.lName}}</td>
+                    <td>{{data.email}}</td>
+                    <td>{{data.comments}}</td>
+                    <td><button type="button" ng-click="tc.removeFormItem($index)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
+
+<script>
+    var app = angular.module("myApp", []);
+    //controller for the form
+    app.controller('formController', function($scope){
+        //comments key set to empty string to allow the length of the comments to be calculated upon instantiation
+        this.form = {comments: ''},
+        $scope.formArray = [],
+        //the maximum length that a comment in the form can be
+        this.maxCommentLength = 30;
+        //method to add the form data
+        this.addData = function () {
+            $scope.formArray.push(this.form);
+            //comments key set to empty string to allow the length of the comments to be calculated upon instantiation
+            this.form = {comments: ''};
+        }
+        //returns the remaining number of characters allowed in the comments of the form
+        this.charactersRemainingInComment = function(){
+            return this.maxCommentLength - this.form.comments.length;
+        }
+        //returns whether or not there is still room left to put characters in the comments of the form
+        this.outOfSpaceInComment = function () {
+            if(this.charactersRemainingInComment() <= 0){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    });
+    //controller for the table
+    app.controller('tableController', function($scope){
+        //removes single item from the array that populates the table
+        this.removeFormItem = function(index){
+            $scope.formArray.splice(index, 1);
+        }
+        //returns the number of elements in the array that populate the table
+        this.numberOfEntries = function(){
+            return $scope.formArray.length;
+        }
+    });
+</script>
 </body>
 </html>
