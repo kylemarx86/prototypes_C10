@@ -1,0 +1,29 @@
+/*tbody > tr:nth-child(odd){*/
+    /*background-color: whitesmoke;*/
+/*}*/
+
+/*tbody > tr:nth-child(even){*/
+    /*background-color: lightslategray;*/
+/*}*/
+
+
+thead > tr{
+    background-color: whitesmoke;
+}
+
+tbody > tr:nth-of-type(odd){
+    background-color: lightslategray;
+}
+
+tbody > tr:nth-of-type(even){
+    background-color: whitesmoke;
+}
+
+
+/*tr:nth-child(odd){*/
+    /*background-color: lightslategray;*/
+/*}*/
+
+/*tr:nth-child(even){*/
+    /*background-color: whitesmoke;*/
+/*}*/
