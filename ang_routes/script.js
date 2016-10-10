@@ -19,7 +19,7 @@ app.config(function ($routeProvider){
             controller: 'contactController'
         })
         .otherwise({
-            redirectTo: 'pages/home.html'
+            redirectTo: '/'
         });
 });
 // Create the controllers for the different pages below
