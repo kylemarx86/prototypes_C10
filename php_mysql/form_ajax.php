@@ -18,11 +18,11 @@
                 url: 'index_insert.php',
                 method: 'post',
                 dataType: 'text',
-                data: {
+                data: $.param({
                     title: $("input[name='title']").val(),
                     details: $("input[name='details']").val(),
                     timestamp: $("input[name='timestamp']").val()
-                },
+                }),
                 success: function(response){
                     console.log('connected to server');
                     console.log(response);
