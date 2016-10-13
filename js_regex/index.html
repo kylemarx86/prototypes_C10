@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>js_regex</title>
+    <script>
+//        //feature set 1
+//        var fs1a = "hello".match(/e/g);
+//        console.log('fs1a: ', fs1a);
+//        var fs1b = "HE entEred".match(/e/gi);
+//        console.log('fs1b: ', fs1b);
+//        var fs1c = "stir the star".match(/st.r/g);
+//        console.log('fs1c: ', fs1c);
+//
+//        //feature set 2 - phone number
+//        var phoneNumber = /(\()*([0-9]){3}(\))*(-)?( )*([0-9]){3}(-)?( )*([0-9]){4}/g;
+//
+//        //test i
+//        var phoneTest1 = "818 555 1212".match(phoneNumber);
+//        console.log('phoneTest1: ', phoneTest1);
+//        //test ii
+//        var phoneTest2 = "818-555-1212".match(phoneNumber);
+//        console.log('phoneTest2: ', phoneTest2);
+//        //test iii
+//        var phoneTest3 = "1818 555 1212".match(phoneNumber);
+//        console.log('phoneTest3: ', phoneTest3);
+//        //test iv
+//        var phoneTest4 = "1818-555-1212".match(phoneNumber);
+//        console.log('phoneTest4: ', phoneTest4);
+//        //test v
+//        var phoneTest5 = "1 818 555 1212".match(phoneNumber);
+//        console.log('phoneTest5: ', phoneTest5);
+//        //test vi
+//        var phoneTest6 = "1-818-555-1212".match(phoneNumber);
+//        console.log('phoneTest6: ', phoneTest6);
+//        //test vii
+//        var phoneTest7 = "(818) 555-1212".match(phoneNumber);
+//        console.log('phoneTest7: ', phoneTest7);
+//        //test viii
+//        var phoneTest8 = "8185551212".match(phoneNumber);
+//        console.log('phoneTest8: ', phoneTest8);
+//        //test ix
+//        var phoneTest9 = "818      555      1212".match(phoneNumber);
+//        console.log('phoneTest9: ', phoneTest9);
+//        //test x
+//        var phoneTest10 = "818 555-1212".match(phoneNumber);
+//        console.log('phoneTest10: ', phoneTest10);
+//        //test xi
+//        var phoneTest11 = "18185551212".match(phoneNumber);
+//        console.log('phoneTest11: ', phoneTest11);
+//
+//        //bad phone test i
+//        var badPhone1 = "818555121".match(phoneNumber);
+//        console.log('badPhone1: ', badPhone1);
+//        //bad phone test i1
+//        var badPhone2 = "818?5551212".match(phoneNumber);
+//        console.log('badPhone2: ', badPhone2);
+//        //bad phone test i11
+//        var badPhone3 = "8185-55-1212".match(phoneNumber);
+//        console.log('badPhone3: ', badPhone3);
+//        //bad phone test iv
+//        var badPhone4 = "555-1212".match(phoneNumber);
+//        console.log('badPhone4: ', badPhone4);
+//        //bad phone test v
+//        var badPhone5 = "eight one eight, five five five, one two one two".match(phoneNumber);
+//        console.log('badPhone5: ', badPhone5);
+
+        //feature set 3 - passwords
+        var password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z](\w){5,31}$/g;
+
+        //valid password test i
+        var validPassword1 = "helloDude3".match(password);
+        console.log('validPassword1 : ', validPassword1);
+        //valid password test ii
+        var validPassword2 = "pa5sWoRd".match(password);
+        console.log('validPassword2 : ', validPassword2);
+        //valid password test iii
+        var validPassword3 = "thisIsaReallyL0NGpassword".match(password);
+        console.log('validPassword3 : ', validPassword3);
+
+        //bad password test i
+        var badPassword1 = "short".match(password);
+        console.log('badPassword1: ', badPassword1);
+        //bad password test ii
+        var badPassword2 = "nocapsbutanumber1".match(password);
+        console.log('badPassword2: ', badPassword2);
+        //bad password test iii
+        var badPassword3 = "5tartsWithANumber".match(password);
+        console.log('badPassword3: ', badPassword3);
+        //bad password test iv
+        var badPassword4 = "ALLCAPSBUT4NUMBER".match(password);
+        console.log('badPassword4: ', badPassword4);
+        //bad password test v
+        var badPassword5 = "toDamnManyLettersForThisToBeAValidP4sswordYouKnowIt".match(password);
+        console.log('badPassword5: ', badPassword5);
+        //bad password test vi
+        var badPassword6 = "ill#g@l_characters".match(password);
+        console.log('badPassword6: ', badPassword6);
+
+    </script>
+</head>
+<body>
+    <h1>JavaScript - Regular Expressions</h1>
+</body>
+</html>
