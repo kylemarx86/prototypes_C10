@@ -4,8 +4,9 @@
     <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
     <script>
         function makeAjaxCall(){
-            var username = $("input[name='username']");
-            var password = $("input[name='password']");
+            var username = $("input[name='username']").val();
+            var password = $("input[name='password']").val();
+//            console.log('user: ', username, 'pass: ',password);
             $.ajax({
                 url: 'login_handler.php',
                 data: {
@@ -14,9 +15,14 @@
                 },
                 cache: false,
                 method: 'post',
-                dataType: 'text',
+                dataType: 'json',
                 success: function(response){
-                    console.log(response);
+//                    console.log(response);
+                    $('#response').text(response.message);
+                },
+                error: function (response) {
+//                    console.log(response);
+                    $('#response').text('FAILED TO CONNECT TO SERVER');
                 }
             });
         }
@@ -26,7 +32,8 @@
 <form>
     username<input name="username"><br>
     password<input name="password"><br>
-    <button type="button" name="login" onclick="">Login</button>
+    <button type="button" name="login" onclick="makeAjaxCall()">Login</button>
+    <p id="response"></p>
 </form>
 </body>
 </html>
