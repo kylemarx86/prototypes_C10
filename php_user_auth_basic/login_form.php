@@ -30,8 +30,8 @@
 </head>
 <body>
 <form>
-    username<input name="username"><br>
-    password<input name="password"><br>
+    username<input type="text" name="username"><br>
+    password<input type="password" name="password"><br>
     <button type="button" name="login" onclick="makeAjaxCall()">Login</button>
     <p id="response"></p>
 </form>
