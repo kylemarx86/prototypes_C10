@@ -42,6 +42,11 @@
                         $container.append($nextButton);
                         //add event handlers to buttons
                         applyEventHandlers();
+
+                        var dot = $('<div>').addClass('dot');
+                        $('#image_container').append(dot);
+//                        console.log(files.length);
+//                        createNavigationDots(files.length);
                     }
                 },
                 error: function (response) {
@@ -62,13 +67,15 @@
         }
         
         function next_image(){
-//            console.log('next image');
-            update_image(1);
+            removeEventHandlers();      //disable event handlers for both buttons while picture updates
+            setTimeout(applyEventHandlers, 3000);
+            update_image(1);        //while waiting for event handlers to be reapplied
         }
         
         function prev_image() {
-//            console.log('previous image');
-            update_image(-1);
+            removeEventHandlers();      //disable event handlers for both buttons while picture updates
+            setTimeout(applyEventHandlers, 3000);
+            update_image(-1);        //while waiting for event handlers to be reapplied
         }
 
         //takes param direction,
@@ -77,6 +84,8 @@
         function update_image(direction) {
             //declare new image
             var new_image_index = null;
+            //declare animation time duration in ms
+            var time_duration = 3000;
             if(direction === 1){
                 if (current_image_index < image_array.length - 1) {
                     new_image_index = current_image_index + 1;
@@ -93,18 +102,31 @@
             //prepare new image for move in
             $(image_array[new_image_index]).css('left', direction*100+'%');
             //slide previous image out
-            $(image_array[current_image_index]).animate({left: -100*direction+'%'},3000);
+            $(image_array[current_image_index]).animate({left: -100*direction+'%'},time_duration);
             //slide new image in
-            $(image_array[new_image_index]).animate({left: '0'},3000);
+            $(image_array[new_image_index]).animate({left: '0'},time_duration);
             //update current_image_index
             current_image_index = new_image_index;
-
-//            console.log('current_image_index: ', current_image_index);
         }
-        
+        //function to enable click handlers on buttons
         function applyEventHandlers() {
             $('#prevButton').click(prev_image);
             $('#nextButton').click(next_image);
+        }
+        //function to disable event handlers while picture is updating
+        function removeEventHandlers(){
+            $('#prevButton').off('click');
+            $('#nextButton').off('click');
+        }
+        //function to add navigation dots to the carousel
+        function createNavigationDots(numberOfImages){
+            var imageContainer = $('#image_container');
+            var dotContainer = $('<div>').addClass('dot_container');
+            for(var i = 0; i < numberOfImages; i++){
+                var dot = $('<div>').addClass('dot');
+                dotContainer.append(dot);
+            }
+            dotContainer.append(imageContainer);
         }
     </script>
 </head>

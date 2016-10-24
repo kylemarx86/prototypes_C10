@@ -20,7 +20,6 @@
                 success: function (response) {
                     if(response.success){
                         var images = response.files;
-//                        var $container = $('<div>').addClass('container').attr('id','imageContainer');
                         var $container = $('#imageContainer');
                         for (var i = 0; i < images.length; i++) {
                             var $image = $('<img>').attr({
