@@ -1,5 +1,5 @@
 <?php
-require_once('emailconfig.php');
+require_once('email_config.php');
 require('phpmailer/PHPMailer/PHPMailerAutoload.php');
 $mail = new PHPMailer;
 $mail->SMTPDebug = 3;                               // Enable verbose debug output
@@ -20,12 +20,13 @@ $options = array(
         'allow_self_signed' => true
     )
 );
+
 $mail->smtpConnect($options);
-$mail->From = 'example@gmail.com';//your email sending account
-$mail->FromName = 'example name';//your email sending account name
-$mail->addAddress(/*your email address, or the email the sender if you are sending confirmation*/, /*email address user name*/);     // Add a recipient
+$mail->From = $_POST['email']; //'example@gmail.com';//your email sending account
+$mail->FromName = $_POST['name'];//your email sending account name
+$mail->addAddress(EMAIL_USER/*your email address, or the email the sender if you are sending confirmation*/, 'Kyle Marx'/*email address user name*/);     // Add a recipient                //uncomment
 //$mail->addAddress('ellen@example.com');               // Name is optional
-$mail->addReplyTo(/*email address of the person sending the message, so you can reply*/);
+$mail->addReplyTo($_POST['email']/*email address of the person sending the message, so you can reply*/);
 //$mail->addCC('cc@example.com');
 //$mail->addBCC('bcc@example.com');
 
